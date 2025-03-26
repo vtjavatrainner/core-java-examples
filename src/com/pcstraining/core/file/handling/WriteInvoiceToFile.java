@@ -18,18 +18,12 @@ public class WriteInvoiceToFile {
         // take a file name
         String fileName = "invoice.data";
         // write to the file
-        ObjectOutputStream objectOutputStream = null;
         try{
-            objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
+            FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(invoice);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }finally {
-            if(objectOutputStream != null) {
-                objectOutputStream.close();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

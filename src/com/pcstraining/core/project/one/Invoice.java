@@ -3,7 +3,7 @@ package com.pcstraining.core.project.one;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Invoice implements Serializable {
+public class Invoice implements Serializable{
     private final String buyerParty;
     private final String supplierParty;
     private final String invoiceNumber;
