@@ -34,10 +34,10 @@ public class MultipleTryBlocks {
 
             int division = number1 / number2;
             System.out.println("division " + division);
-        } catch (ArithmeticException e) {
-            System.out.println("ArithmeticException occurred while dividing :- " + e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println("IllegalArgumentException occured :- " + e.getMessage());
+        } catch (ArithmeticException | IllegalArgumentException e) {
+            System.out.println("Exception occurred while dividing :- " + e.getMessage());
+        }finally {
+            System.out.println("finally block");
         }
     }
 }
