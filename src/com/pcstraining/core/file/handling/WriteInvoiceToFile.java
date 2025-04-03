@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 
 public class WriteInvoiceToFile {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         //Create Invoice object
         LocalDate invoiceDate = LocalDate.now();
         LocalDate invoiceMaturityDate = invoiceDate.plusDays(50);
@@ -19,11 +19,14 @@ public class WriteInvoiceToFile {
         String fileName = "invoice.data";
         // write to the file
         try{
-            FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+            FileOutputStream fileOutputStream = null;
+            fileOutputStream = new FileOutputStream(fileName);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(invoice);
-        } catch (Exception e) {
-            e.printStackTrace();
+        }catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }catch (IOException e){
+            throw new RuntimeException(e);
         }
     }
 }
