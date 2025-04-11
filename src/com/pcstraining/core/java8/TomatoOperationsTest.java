@@ -24,9 +24,9 @@ public class TomatoOperationsTest {
         System.out.println("Green tomatoes :-" + filterTomatoesByColor(tomatoList, Color.GREEN));
 
         System.out.println("Red tomatoes :-" + filterTomatoesByColor(tomatoList, Color.RED));
-
+        TomatoPredicate greenAndHeavyTomatoPredicate = (Tomato tomato) -> tomato.getColor().equals(Color.GREEN) && tomato.getWeight() > 100;
         System.out.println("filter tomatoes by GreenAndHeavyTomato :-" + filterTomatoesByPredicate(tomatoList,
-                (Tomato tomato) -> tomato.getColor().equals(Color.GREEN) && tomato.getWeight() > 100));
+                greenAndHeavyTomatoPredicate));
 
         System.out.println("filter tomatoes by RedAndLightTomato :-" + filterTomatoesByPredicate(tomatoList,
                 (Tomato tomato) -> tomato.getColor().equals(Color.RED) && tomato.getWeight() < 50));
@@ -34,17 +34,17 @@ public class TomatoOperationsTest {
         System.out.println("filter tomatoes by Red color only :-" + filterTomatoesByPredicate(tomatoList,
                 (Tomato tomato) -> tomato.getColor().equals(Color.RED)));
 
-        System.out.println("Filter GREEN tomatoes using java 8 :-"+ tomatoList.stream()// iterate over list
+        System.out.println("Filter GREEN tomatoes using java 8 :-" + tomatoList.stream()// iterate over list
                 .filter(tomato -> tomato.getColor().equals(Color.GREEN)) // test using predicate
                 .collect(Collectors.toList()));
 
 
-        System.out.println("Filter RED tomatoes using java 8 :-"+ tomatoList.stream()// iterate over list
+        System.out.println("Filter RED tomatoes using java 8 :-" + tomatoList.stream()// iterate over list
                 .filter(tomato -> tomato.getColor().equals(Color.RED)) // test using predicate
                 .collect(Collectors.toList()));
 
 
-        System.out.println("Filter RED and Light tomatoes using java 8 :-"+ tomatoList.stream()// iterate over list
+        System.out.println("Filter RED tomatoes using java 8 :-" + tomatoList.stream()// iterate over list
                 .filter(tomato -> tomato.getColor().equals(Color.RED) && tomato.getWeight() < 50) // test using predicate
                 .collect(Collectors.toList()));
     }
