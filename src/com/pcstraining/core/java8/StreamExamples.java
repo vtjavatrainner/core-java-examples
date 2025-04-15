@@ -1,9 +1,6 @@
 package com.pcstraining.core.java8;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -51,10 +48,17 @@ public class StreamExamples {
 
         //Give me distinct colours of tomatoes using Set
         Set<Color> distinctTomatoColourSet = tomatoList.stream()
-                .map(t -> t.getColor())
+                .map(Tomato::getColor)
                 .collect(Collectors.toSet());
 
         System.out.println("distinctTomatoColourSet :-" + distinctTomatoColourSet);
+
+        //Give me distinct colours of tomatoes using LinkedHashSet
+        Set<Color> distinctTomatoColourLinkedHashSet = tomatoList.stream()
+                .map(Tomato::getColor)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
+        System.out.println("distinctTomatoColourLinkedHashSet :-" + distinctTomatoColourLinkedHashSet);
 
     }
 }
